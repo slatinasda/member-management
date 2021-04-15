@@ -1,0 +1,12 @@
+*.pyc
+*.pyd
+*.pyo
+*.mo
+*.csv
+.cache/
+.vscode/
+venv/
+__pycache__/
+webroot/
+db.sqlite3
+db.sqlite3-journal
