@@ -1,3 +1,6 @@
+from datetime import datetime
+from typing import Optional
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -25,3 +28,15 @@ class Member(models.Model):
         if name_parts:
             return name_parts[-1]
         return ''
+
+    def full_name(self) -> str:
+        return f'{self.first_name()} {self.last_name()}'.strip()
+
+    def years_old(self, year: Optional[int] = None) -> Optional[int]:
+        if year is None:
+            year = datetime.today().year
+
+        if not self.birth_date:
+            return None
+
+        return year - self.birth_date.year
